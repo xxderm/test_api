@@ -13,7 +13,7 @@ class PostController extends Controller
         return PostResource::collection(Post::all());
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : PostResource
     {
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -23,12 +23,12 @@ class PostController extends Controller
         return new PostResource($post);
     }
 
-    public function show(Post $post)
+    public function show(Post $post) : PostResource
     {
         return new PostResource($post);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post) : PostResource
     {
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',

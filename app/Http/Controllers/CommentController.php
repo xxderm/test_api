@@ -13,7 +13,7 @@ class CommentController extends Controller
         return CommentResource::collection(Comment::all());
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : CommentResource
     {
         $validated = $request->validate([
             'post_id' => 'required|exists:posts,id',
@@ -24,12 +24,12 @@ class CommentController extends Controller
         return new CommentResource($comment);
     }
 
-    public function show(Comment $comment)
+    public function show(Comment $comment) : CommentResource
     {
         return new CommentResource($comment);
     }
 
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Comment $comment) : CommentResource
     {
         $validated = $request->validate([
             'post_id' => 'required|exists:posts,id',

@@ -13,7 +13,7 @@ class UserController extends Controller
         return UserResource::collection(User::all());
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : UserResource
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -22,12 +22,12 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function show(User $user)
+    public function show(User $user) : UserResource
     {
         return new UserResource($user);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user) : UserResource
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
